@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="xuta@52.175.223.238:22 password" createEmptyFolders="true" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="nlp_0">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/nlpXD" local="$PROJECT_DIR$/../nlpXD" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="xuta@52.175.223.238:22 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/mnt/xutan/ry/zzy/nlp" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

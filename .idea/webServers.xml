@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0fcbd600-da70-4eff-812b-6d2fa3f90237" name="nlp_0">
+        <fileTransfer rootFolder="/mnt/xutan/ry/zzy" accessType="SFTP" host="52.175.223.238" port="22" sshConfigId="92642260-a8af-499f-b777-d3a523de74e7" sshConfig="xuta@52.175.223.238:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
