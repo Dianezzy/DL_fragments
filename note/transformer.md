@@ -1,4 +1,9 @@
-## 1 自回归解码
+论文中的transfomer用于机器翻译，本质上是一个Encoder-Decoder的结构，编码器的输出会作为解码器的输入
+
+
+
+## 知识储备
+
 - 自回归
 
   用历史数据的线形加权和+噪声扰动表示当前当前时序数据 
@@ -8,8 +13,6 @@
 t-1时刻的输出是t时刻的输入
 
 ### Attention
-
-$Softmax(\frac{Q*K^T}{\sqrt{d_K}})*V$
 
 内积表示相似度，d_k用于归一化，softmax得到的score值相当于一个权重
 
@@ -35,19 +38,31 @@ $Softmax(\frac{Q*K^T}{\sqrt{d_K}})*V$
 
 encoder由6层相同的层组成，每一层分别由两部分组成：
 
+
+
 - 第一部分是一个**multi-head self-attention mechanism**
 
   有依赖关系，无法并行
 
+  数据经过一个self-attention结构得到加权特征向量
+
+  $Z=Softmax(\frac{Q*K^T}{\sqrt{d_K}})*V$
+
 - 第二部分是一个**position-wise feed-forward network**，是一个全连接层
 
   无依赖关系，可以并行
+  
+  第一层的激活函数是ReLU，第二层是一个线性激活函数
+  
+  $FFN(Z)=max(0,ZW1+B1)W2+B2$
 
 两个部分，都有一个**残差连接(residual connection)**，然后接着一个**Layer Normalization**。
 
+
+
 <img src="http://aistar.site/20190404/6.jpg" alt="img" style="zoom:50%;" />
 
-<img src="http://aistar.site/20190404/7.jpg" alt="img" style="zoom:70%;" />
+
 
 - 输入
 
@@ -107,11 +122,14 @@ encoder由6层相同的层组成，每一层分别由两部分组成：
 
 decoder 和 encoder 不同的地方在 multi-head context-attention mechanism
 
-
+<img src="http://aistar.site/20190404/7.jpg" alt="img" style="zoom:70%;" />
 
 ### 训练
 
 - **输入** 上次的输入+embedding（标记中下一个单词）(实操中一般一次把标记全输进去加一个sequencing mask);第一次输入是一个特殊的token （bos/eos/等等）
+
+   来之与解码器的上一个输出， ![[公式]](https://www.zhihu.com/equation?tex=K) 和 ![[公式]](https://www.zhihu.com/equation?tex=V)则来自于与编码器的输出
+
 - **输出** 一个代表下一个预测单词的实数向量
 
 ### inference
